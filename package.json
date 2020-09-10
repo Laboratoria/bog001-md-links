@@ -1,4 +1,29 @@
 {
-  "name": "md-links",
-  "version": "0.1.0"
+  "name": "bog001-md-links",
+  "version": "1.0.0",
+  "description": "Creando una libreria con javascrip y node.js",
+  "main": "./src/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "pretest": "npm run htmlhint && npm run eslint",
+    "eslint": "eslint --ext .js src/ test/",
+    "test": "jest --verbose --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaniRami/bog001-md-links.git"
+  },
+  "keywords": [],
+  "author": "Daniela Ramirez Aristizabal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DaniRami/bog001-md-links/issues"
+  },
+  "homepage": "https://github.com/DaniRami/bog001-md-links#readme",
+  "devDependencies": {
+    "eslint": "^7.8.1",
+    "jest": "^26.4.2"
+  }
 }
