@@ -1,5 +1,5 @@
 {
-  "name": "bog001-md-links",
+  "name": "@dani/bog001-md-links",
   "version": "1.0.0",
   "description": "Creando una libreria con javascrip y node.js",
   "main": "./src/index.js",
@@ -10,6 +10,9 @@
     "pretest": "npm run htmlhint && npm run eslint",
     "eslint": "eslint --ext .js src/ test/",
     "test": "jest --verbose --coverage"
+  },
+  "bin": {
+    "md_checkLinks": "./CLI/cli.js"
   },
   "repository": {
     "type": "git",
@@ -25,5 +28,8 @@
   "devDependencies": {
     "eslint": "^7.8.1",
     "jest": "^26.4.2"
+  },
+  "dependencies": {
+    "markdown-it": "^11.0.0"
   }
 }
