@@ -12,7 +12,7 @@ const read = (ruta) => {
   });
 };
 
-read(__dirname + '/archivo.txt')
+read(__dirname+ '/archivo.txt')
   .then((data) => {
     console.log(data.toString());
   })
