@@ -1,7 +1,7 @@
 {
-  "name": "@dani/bog001-md-links",
+  "name": "@dani/md-links",
   "version": "1.0.0",
-  "description": "Creando una libreria con javascrip y node.js",
+  "description":"Creating a library that reads links in markdown format with javascrip and node.js",
   "main": "./src/index.js",
   "directories": {
     "test": "test"
