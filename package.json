@@ -1,18 +1,7 @@
 {
-  "name": "md-links",
+  "name": "@anarativa09/md-links",
   "version": "0.1.0",
-  "description": "get link information in a markdown file",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "test": "jest --verbose --coverage"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AnaRativa09/bog001-md-links.git"
-  },
+  "description": "Get link information in a markdown file (.md)",
   "keywords": [
     "javascript",
     "nodejs",
@@ -20,12 +9,26 @@
     "promises",
     "md-links"
   ],
-  "author": "Ana Rátiva",
-  "license": "MIT",
+  "homepage": "https://github.com/AnaRativa09/bog001-md-links#readme",
   "bugs": {
     "url": "https://github.com/AnaRativa09/bog001-md-links/issues"
   },
-  "homepage": "https://github.com/AnaRativa09/bog001-md-links#readme",
+  "license": "MIT",
+  "author": "Ana Rátiva <anarativa09@gmail.com>",
+  "main": "./src/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnaRativa09/bog001-md-links.git"
+  },
+  "scripts": {
+    "test": "jest --verbose --coverage"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "eslint": "^7.9.0",
