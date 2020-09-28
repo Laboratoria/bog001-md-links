@@ -24,21 +24,24 @@ const getLinks = (path) => {
   return new Promise ((res, rej) => {
     fs.readFile(path, "utf-8", (error, data) => {
       const regularExpression = /\[([^\[]+)\](\(.*\))/gm;
+      const blacklist = "#" // Para identificar links internos
       path = resolve(path); // Resolver a path absoluto
 
-      if (error){
+
+      if (error){ // Error en la lectura del archivo
         console.error('Hubo un error en la ruta :(')
       } else if (data.match(regularExpression)) {
         const arr = data.match(regularExpression);
-        //console.log(arr) //(Array de links)
+
         const links = arr.map((item) => {
           const divideItem  = item.split("](")
           const text = divideItem[0].replace("[", "");
           const href = divideItem[1].replace(")", "");
           return ({ href, text, path });
         });
-        res (links) //¿Aquí va?
-        console.log(links)
+
+        const getLinksWithUrl = links.filter((link) => !link.href.startsWith(blacklist))
+        res (getLinksWithUrl)
       } else {
         rej (new Error('No hay links en este archivo :('))
       }
@@ -46,4 +49,8 @@ const getLinks = (path) => {
   });
 };
 
-console.log(getLinks(userRelativePath))
+// Consumir promesa
+getLinks(userWithoutLinksPath)
+  .then(res => console.log(res))
+  .catch(err => console.log(err))
+

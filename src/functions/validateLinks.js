@@ -115,23 +115,27 @@ const validateLinks = (arrLinks) => {
 };
 
 // Consumir promesa
-validateLinks(mockLinksInfo)
+/* validateLinks(mockLinksInfo)
   .then(res => console.log(res))
-  .catch(err => console.log(err))
+  .catch(err => console.log(err)) */
 
-/*---------- Stats Links ----------*/
+/*---------- Stats Links (Unique + Total) ----------*/
 const getStats = (arrLinks) => {
   const totalLinks = arrLinks.length;
   const linksUniqueArray = [...new Set(arrLinks.map(link => link.href))];
   console.log (linksUniqueArray)
 
   return `
-  total = ${totalLinks}
+  Total = ${totalLinks}
   Unique = ${linksUniqueArray.length}`;
 }
 
 console.log(getStats(mockLinksInfo))
 
-/*---------- Validate + Stats Links ----------*/
+/*---------- Get broken links ----------*/
+/* const getBrokenValues = (arrLinksValidate) => {
+  const failedLinks = arrLinksValidate.filter((link) => link.statusText === 'Fail');
+  return `Broken = ${failedLinks.length}`;
+}
 
-
+console.log(getBrokenValues(mockLinksWithValidate)) */
