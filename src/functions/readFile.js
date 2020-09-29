@@ -1,11 +1,6 @@
 const fs = require('fs')
-const { extname, resolve } = require('path');
-
-// Paths
-const userAbsolutePath = '/Users/Ana/Desktop/bog001-md-links/src/README-TEST.md';
-const userRelativePath = 'src/README-TEST.md';
-const userInvalidPath = '/Users/Ana/Desktop/bog001-md-links/package.json';
-const userWithoutLinksPath = '/Users/Ana/Desktop/bog001-md-links/src/README-TEST-NOLINKS.md';
+const resolve = require('path');
+const { userAbsolutePath, userRelativePath, userInvalidPath, userWithoutLinksPath } = require('../../test/docs/mocksArr.js')
 
 /*---------- Leer archivo ----------*/
 /* const readFile = (path) => {
@@ -24,33 +19,36 @@ const getLinks = (path) => {
   return new Promise ((res, rej) => {
     fs.readFile(path, "utf-8", (error, data) => {
       const regularExpression = /\[([^\[]+)\](\(.*\))/gm;
-      const blacklist = "#" // Para identificar links internos
+      const internalLinks = "#" // Para identificar links internos
       path = resolve(path); // Resolver a path absoluto
 
 
       if (error){ // Error en la lectura del archivo
-        console.error('Hubo un error en la ruta :(')
+        rej (new Error('Hubo un error en la ruta :('));
       } else if (data.match(regularExpression)) {
         const arr = data.match(regularExpression);
 
         const links = arr.map((item) => {
-          const divideItem  = item.split("](")
+          const divideItem  = item.split("](");
           const text = divideItem[0].replace("[", "");
           const href = divideItem[1].replace(")", "");
           return ({ href, text, path });
         });
 
-        const getLinksWithUrl = links.filter((link) => !link.href.startsWith(blacklist))
+        const getLinksWithUrl = links.filter((link) => !link.href.startsWith(internalLinks))
         res (getLinksWithUrl)
       } else {
-        rej (new Error('No hay links en este archivo :('))
+        rej (new Error('No hay links en este archivo :('));
       }
     });
   });
 };
 
 // Consumir promesa
-getLinks(userWithoutLinksPath)
+getLinks(userAbsolutePath)
   .then(res => console.log(res))
   .catch(err => console.log(err))
+
+
+  module.exports = getLinks;
 

@@ -1,8 +1,11 @@
 // const fs = require('fs')
 // const path = require('path');
 // const fetch = require('node-fetch');
+// const { extname, resolve } = require('path'); // Extensión md, Path absoluto
 
-const { extname, resolve } = require('path');
+const getLinks = require('./functions/readFile.js');
+const { validateLinks, getStats, getBrokenValues } = require('./functions/options.js');
+const { mockLinksInfo, mockLinksWithValidate } = require('../test/docs/mocksArr.js');
 
 /*---------- Ruta absoluta ----------*/
 //const toAbsolutePath = (path) => {resolve(path)}
@@ -36,4 +39,16 @@ const mdLinks= (path, options) => {
     return validateLinks(links)
   }) */
 
+/*---------- Invocación otras funciones ----------*/
+  /* getLinks(userRelativePath)
+  .then(res => console.log(res))
+  .catch(err => console.log(err))*/
+
+/* validateLinks(mockLinksInfo)
+  .then(res => console.log(res))
+  .catch(err => console.log(err)) */
+
+// console.log(getStats(mockLinksInfo))
+
+// console.log(getBrokenValues(mockLinksWithValidate))
 
