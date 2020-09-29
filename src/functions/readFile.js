@@ -1,5 +1,5 @@
 const fs = require('fs')
-const resolve = require('path');
+const { resolve } = require('path');
 const { userAbsolutePath, userRelativePath, userInvalidPath, userWithoutLinksPath } = require('../../test/docs/mocksArr.js')
 
 /*---------- Leer archivo ----------*/
@@ -22,7 +22,6 @@ const getLinks = (path) => {
       const internalLinks = "#" // Para identificar links internos
       path = resolve(path); // Resolver a path absoluto
 
-
       if (error){ // Error en la lectura del archivo
         rej (new Error('Hubo un error en la ruta :('));
       } else if (data.match(regularExpression)) {
@@ -44,11 +43,5 @@ const getLinks = (path) => {
   });
 };
 
-// Consumir promesa
-getLinks(userAbsolutePath)
-  .then(res => console.log(res))
-  .catch(err => console.log(err))
-
-
-  module.exports = getLinks;
+module.exports = getLinks;
 
