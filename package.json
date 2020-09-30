@@ -1,10 +1,10 @@
 {
-  "name": "@DaniRami/bog001-md-links",
+  "name": "@danirami/bog001-md-links",
   "version": "1.0.0",
-  "description":"Creating a library that reads links in markdown format with javascrip and node.js",
+  "description": "Creating a library that reads links in markdown format with javascrip and node.js",
   "main": "./src/index.js",
   "directories": {
-    "test": "test"
+    "test": "jest --verbose --coverage"
   },
   "scripts": {
     "pretest": "npm run htmlhint && npm run eslint",
@@ -14,22 +14,34 @@
   "bin": {
     "md_checkLinks": "./CLI/cli.js"
   },
+  "preferGlobal": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DaniRami/bog001-md-links.git"
   },
-  "keywords": [],
-  "author": "Daniela Ramirez Aristizabal",
-  "license": "ISC",
+  "keywords": [
+    "javascript",
+    "node",
+    "libreria",
+    "markdown",
+    "jest"
+  ],
+  "author": "Daniela Ramirez <daniedi.solution@gmail.com>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/DaniRami/bog001-md-links/issues"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "homepage": "https://github.com/DaniRami/bog001-md-links#readme",
   "devDependencies": {
     "eslint": "^7.8.1",
+    "fetch-mock": "^9.10.7",
     "jest": "^26.4.2"
   },
   "dependencies": {
-    "markdown-it": "^11.0.0"
+    "marked": "^1.1.1",
+    "node-fetch": "^2.6.1"
   }
 }
