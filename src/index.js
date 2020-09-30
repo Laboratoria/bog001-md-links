@@ -1,17 +1,16 @@
 // const fs = require('fs')
 // const path = require('path');
-// const fetch = require('node-fetch');
 // const { extname, resolve } = require('path'); // Extensión md, Path absoluto
 
 const getLinks = require('./functions/readFile.js');
-const { validateLinks, getStats, getBrokenValues } = require('./functions/options.js');
-const { mockLinksInfo, mockLinksWithValidate } = require('../test/docs/mocksArr.js');
+const validate = require('./functions/options.js');
+const mocks = require('../test/docs/mocksArr.js');
 
 /*---------- Ruta absoluta ----------*/
 //const toAbsolutePath = (path) => {resolve(path)}
 
 /*---------- Function mdLinks ----------*/
-const mdLinks= (path, options) => {
+const mdLinks = (path, options) => {
   // 1. ¿Resolver a ruta absoluta?
   // 2. Definir si es archivo o file ++ 3. ¿Es .md?
   // 4. Leer archivo ++ 5. Extraer links
@@ -40,15 +39,16 @@ const mdLinks= (path, options) => {
   }) */
 
 /*---------- Invocación otras funciones ----------*/
-  /* getLinks(userRelativePath)
-  .then(res => console.log(res))
-  .catch(err => console.log(err))*/
-
-/* validateLinks(mockLinksInfo)
+/* getLinks(userRelativePath)
   .then(res => console.log(res))
   .catch(err => console.log(err)) */
 
-// console.log(getStats(mockLinksInfo))
+validate.validateLinks(mocks.mockLinksInfo)
+  .then(res => console.log(res))
+  .catch(err => console.log(err))
 
-// console.log(getBrokenValues(mockLinksWithValidate))
+
+// console.log(getStats(mocks.mockLinksInfo))
+
+// console.log(getBrokenValues(mocks.mockLinksValidate))
 

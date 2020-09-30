@@ -1,6 +1,5 @@
 const fs = require('fs')
 const { resolve } = require('path');
-const { userAbsolutePath, userRelativePath, userInvalidPath, userWithoutLinksPath } = require('../../test/docs/mocksArr.js')
 
 /*---------- Leer archivo ----------*/
 /* const readFile = (path) => {
@@ -44,4 +43,3 @@ const getLinks = (path) => {
 };
 
 module.exports = getLinks;
-

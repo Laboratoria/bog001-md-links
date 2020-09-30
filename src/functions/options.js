@@ -1,5 +1,7 @@
 const fetch = require('node-fetch');
-const { mockLinksInfo, mockLinksWithValidate } = require('../../test/docs/mocksArr.js');
+const mocks = require('../../test/docs/mocksArr.js');
+
+const validate = {}
 
 // Pruebita de Fetch
 /* fetch('https://es.wikipedia.org/wiki/Markdown')
@@ -30,18 +32,10 @@ const validateLinks = (arrLinks) => {
   }));
 
   return Promise.all(arrPromises)
-    .then((res) => {
-      return res;
-    })
 };
 
-// Consumir promesa
-validateLinks(mockLinksInfo)
-  .then(res => console.log(res))
-  .catch(err => console.log(err))
-
 /*---------- Stats Links (Unique + Total) ----------*/
-const getStats = (arrLinks) => {
+/* const getStats = (arrLinks) => {
   const totalLinks = arrLinks.length;
   const linksUniqueArray = [...new Set(arrLinks.map(link => link.href))];
   console.log (linksUniqueArray)
@@ -49,20 +43,21 @@ const getStats = (arrLinks) => {
   return `
   Total = ${totalLinks}
   Unique = ${linksUniqueArray.length}`;
-}
+} */
 
-console.log(getStats(mockLinksInfo))
+/* console.log(getStats(mocks.mockLinksInfo)) */
 
 /*---------- Get broken links ----------*/
-const getBrokenValues = (arrLinksValidate) => {
+/* const getBrokenValues = (arrLinksValidate) => {
   const failedLinks = arrLinksValidate.filter((link) => link.statusText === 'Fail');
   return `Broken = ${failedLinks.length}`;
-}
+} */
 
-console.log(getBrokenValues(mockLinksWithValidate))
+/* console.log(getBrokenValues(mocks.mockLinksValidate)) */
 
-module.exports = {
-  validateLinks,
-  getStats,
-  getBrokenValues
-}
+
+validate.validateLinks = validateLinks;
+// validate.getStats = getStats;
+// validate.getBrokenValues = getBrokenValues;
+
+module.exports = validate;
