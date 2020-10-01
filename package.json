@@ -32,7 +32,7 @@
     "url": "https://github.com/DaniRami/bog001-md-links/issues"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry":"https://npm.pkg.github.com/"
   },
   "homepage": "https://github.com/DaniRami/bog001-md-links#readme",
   "devDependencies": {
