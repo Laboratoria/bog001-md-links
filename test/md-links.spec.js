@@ -1,62 +1,53 @@
+/* eslint-disable no-undef */
 const getLinks = require('../src/functions/readFile.js');
-// const { validateLinks, getStats, getBrokenValues } = require('../src/functions/options.js');
-const mocks = require('../test/docs/mocksArr.js');
-const validate = require('../src/functions/options')
+const mocks = require('./docs/mocksArr.js');
+const validate = require('../src/functions/options');
 
-/*---------- Leer archivo y extraer links ----------*/
+/* ---------- Leer archivo y extraer links ----------*/
 describe('getLinks', () => {
-
   it('Debería ser una función', () => {
     expect(typeof getLinks).toBe('function');
   });
 
   it('Retorna un array con objetos {href, text, file}', () => {
     const userPath = 'test/docs/README-TEST.md';
-    return getLinks(userPath).then(links => {
-        expect(links).toEqual(mocks.mockLinksInfo)
-    })
+    return getLinks(userPath).then((links) => {
+      expect(links).toEqual(mocks.mockLinksInfo);
+    });
   });
 
   it('Falla cuando no hay links en un archivo', () => {
     const userPath = 'test/docs/README-TEST-NOLINKS.md';
-    return getLinks(userPath).catch(e => {
-        expect(e.message).toBe('No hay links en este archivo :(')
+    return getLinks(userPath).catch((e) => {
+      expect(e.message).toBe('No hay links en este archivo :(');
     });
   });
 
   it('Falla cuando la ruta es incorrecta', () => {
     const userPath = 'test/docs/REDME-TEST.md';
-    return getLinks(userPath).catch(e => {
-        expect(e.message).toBe('Hubo un error en la ruta :(')
+    return getLinks(userPath).catch((e) => {
+      expect(e.message).toBe('Hubo un error en la ruta :(');
     });
   });
-
 });
 
-/*---------- Validar los links de los archivos ----------*/
+/* ---------- Validar los links de los archivos ----------*/
 describe('validateLinks', () => {
-
   it('Debería ser una función', () => {
     expect(typeof validate.validateLinks).toBe('function');
   });
 
-  it('Retorna un array con objetos {href, text, file, status, statusText}', () => {
-    return validate.validateLinks(mocks.mockLinksInfo).then(links => {
-        expect(links).toEqual(mocks.mockLinksValidate)
-    })
-  });
+  it('Retorna un array con objetos {href, text, file, status, statusText}', () => validate.validateLinks(mocks.mockLinksInfo).then((links) => {
+    expect(links).toEqual(mocks.mockLinksValidate);
+  }));
 
-  it('Retorna valor "OK" en statusText cuando el status es >= 200 && < 400', () => {
-    return validate.validateLinks(mocks.trueLinksInfo).then(links => {
-        expect(links).toEqual(mocks.trueLinksValidate)
-    })
-  });
+  it('Retorna valor "OK" en statusText cuando el status es >= 200 && < 400', () => validate.validateLinks(mocks.trueLinksInfo).then((links) => {
+    expect(links).toEqual(mocks.trueLinksValidate);
+  }));
 
-  it('Retorna valor "Fail" en statusText cuando el status no es >= 200 && < 400', () => {
-    return validate.validateLinks(mocks.fakeLinksInfo).then(links => {
-        expect(links).toEqual(mocks.fakeLinksValidate)
-    })
-  });
+  it('Retorna valor "Fail" en statusText cuando el status no es >= 200 && < 400', () => validate.validateLinks(mocks.fakeLinksInfo).then((links) => {
+    expect(links).toEqual(mocks.fakeLinksValidate);
+  }));
 
   /* it('Falla cuando no se puede hacer la petición (Sin internet)', () => {
     return validate.validateLinks('aqui no sé').catch(e => {
