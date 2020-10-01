@@ -125,6 +125,19 @@ Broken: 1
 
 `const mdlinks = require('@danirami/bog001-md-links')`
 
+Cualquiera de las dos opciones te retornar un arreglo de objetos de links:
+
+ ``[{ href, text, file }]``
+
+`mdLinks('test').then(data => console.log(data))`
+
+`mdLinks('test', { validate: false }).then(data => console.log(data))`
+
+Para validar el status de los links  :
+
+`mdLinks('test', { validate: true }).then(data => console.log(data))`
+
+[{ href, text, file, status, status_message }]
 
 ### FLUJO 
 

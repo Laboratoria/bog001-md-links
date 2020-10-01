@@ -58,8 +58,7 @@ const cli = (PATH, opcion, opcion2) => {
   }
 
   if (opcion === "--stats") {
-    return leading
-      .mdLinks(PATH, { validate: true })
+    return leading.mdLinks(PATH, { validate: true })
       .then((resp) => stats(resp))
       .then((links) => {
         const result = `Total: ${links.Total}\nUnique: ${links.Unique}`;
