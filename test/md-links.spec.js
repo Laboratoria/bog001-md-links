@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 const getLinks = require('../src/functions/readFile.js');
 const mocks = require('./docs/mocksArr.js');
-const validate = require('../src/functions/options');
+const validate = require('../src/functions/validate.js');
 
 /* ---------- Leer archivo y extraer links ----------*/
 describe('getLinks', () => {
@@ -39,14 +39,6 @@ describe('validateLinks', () => {
 
   it('Retorna un array con objetos {href, text, file, status, statusText}', () => validate.validateLinks(mocks.mockLinksInfo).then((links) => {
     expect(links).toEqual(mocks.mockLinksValidate);
-  }));
-
-  it('Retorna valor "OK" en statusText cuando el status es >= 200 && < 400', () => validate.validateLinks(mocks.trueLinksInfo).then((links) => {
-    expect(links).toEqual(mocks.trueLinksValidate);
-  }));
-
-  it('Retorna valor "Fail" en statusText cuando el status no es >= 200 && < 400', () => validate.validateLinks(mocks.fakeLinksInfo).then((links) => {
-    expect(links).toEqual(mocks.fakeLinksValidate);
   }));
 
   /* it('Falla cuando no se puede hacer la petición (Sin internet)', () => {

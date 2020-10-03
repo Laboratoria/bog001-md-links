@@ -1,10 +1,5 @@
-/* eslint-disable no-unused-vars */
-// const fs = require('fs')
-// const path = require('path');
-// const { extname, resolve } = require('path'); // Extensión md, Path absoluto
-
 const getLinks = require('./functions/readFile.js');
-const validate = require('./functions/options.js');
+const validate = require('./functions/validate.js');
 const mocks = require('../test/docs/mocksArr.js');
 
 /* ---------- Ruta absoluta ----------*/
@@ -22,27 +17,10 @@ const mdLinks = (path, options) => {
   //    - Validate + Stats
 };
 
-/* ---------- mdLinks whitout options ----------*/
-/* function getLinkValues(path) {
-  return new Promise ((res, rej) => {
-    if (extname(path) === '.md') {
-      res(getLinks(path))
-    } else {
-      rej(new Error('Este archivo no es .md :('))
-    }
-  });
-} */
-
-// Aquí debería consumir la promesa :)
-/* getLinkValues('README-TEST.md')
-  .then((links) => {
-    return validateLinks(links)
-  }) */
-
 /* ---------- Invocación otras funciones ----------*/
-/* getLinks(userRelativePath)
-  .then(res => console.log(res))
-  .catch(err => console.log(err)) */
+console.log(getLinks('test/docs'));
+/* .then((res) => console.log(res))
+  .catch((err) => console.log(err)); */
 
 /* validate.validateLinks(mocks.mockLinksInfo)
   .then(res => console.log(res));
