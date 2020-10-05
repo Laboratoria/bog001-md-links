@@ -124,7 +124,7 @@ Broken: 1
 ## IMPORTANDO EL  MODULO  CON  REQUIRE  PARA USARLO
 
 
-`const mdlinks = require('@danirami/bog001-md-links')`
+`const mdLinks = require('@danirami/bog001-md-links')`
 
 _Cualquiera de las dos opciones va a retornar un arreglo de objetos de links:_
 
