@@ -8,7 +8,7 @@ Para instalar esta libreria debe hacer lo siguiente en la linea de comando
 
 ### INSTALACION
 
-`$ npm install -g danirami/bog001-md-links`
+`$ npm install @danirami/bog001-md-links@1.0.0`
 
 
 ### USO
