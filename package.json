@@ -1,6 +1,6 @@
 {
   "name": "@danirami/bog001-md-links",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Creating a library that reads links in markdown format with javascrip and node.js",
   "main": "./src/index.js",
   "directories": {
