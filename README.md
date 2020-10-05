@@ -100,7 +100,7 @@ Si pasamos la option --stats nos devuelve un texto con estadísticas básicas so
 ```sh
 $ md_checkLinks <path-to-file> --stats
 
- Total: 3
+Total: 3
 Unique: 3 
 ```
 
@@ -114,6 +114,7 @@ Si pasamos estas dos options combinadas obtenemos  estadísticas que necesiten d
 
 ```sh
 $ md_checkLinks <path-to-file> --stats --validate
+
 Total: 3
 Unique: 3
 Broken: 1
