@@ -149,7 +149,7 @@ _Para validar el status de los links  :_
 
 ### FLUJO 
 
-<img width='80' height='50' src='img/flujo.png' alt='diagrama'>
+<img width='50' height='50' src='img/flujo.png' alt='diagrama'>
  
 
 
