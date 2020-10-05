@@ -4,7 +4,7 @@ Esta libreria  se desarrollo con el fin de leer y analizar archivos de formato *
 
 ##  INSTALACION Y GUIA DE USO
 
-Para instalar esta libreria debe hacer lo siguiente en la linea de comando 
+Para instalar esta libreria debe hacer lo siguiente en la linea de comando
 
 ### INSTALACION
 
@@ -130,17 +130,17 @@ _Cualquiera de las dos opciones va a retornar un arreglo de objetos de links:_
  ``[{ href, text, file }]``
 
 
-`mdLinks('test').then(data => console.log(data))`
+`mdLinks("./some/example.md").then(data => console.log(data))`
 
 
-`mdLinks('test', { validate: false }).then(data => console.log(data))`
+`mdLinks("./some/example.md" { validate: false }).then(data => console.log(data))`
 
 
 
 
 _Para validar el status de los links  :_
 
-`mdLinks('test', { validate: true }).then(data => console.log(data))`
+`mdLinks("./some/example.md", { validate: true }).then(data => console.log(data))`
 
 `[{ href, text, file, status, status_message }]`
 
