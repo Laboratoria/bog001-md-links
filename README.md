@@ -31,7 +31,7 @@ Si ejecutamos el comando  con una ruta sin ninguna option nos devuelve un arregl
 #### Ejemplo
 
 ```js
-md_checkLinks <path-to-file>
+ $ md_checkLinks <path-to-file>
 
 
 [
@@ -64,7 +64,7 @@ Si pasamos la opción --validate, el módulo hace una petición HTTP para averig
 #### Ejemplo
 
 ```js
-md_checkLinks <path-to-file> --validate
+ $ md_checkLinks <path-to-file> --validate
 
  
 {
@@ -98,7 +98,7 @@ Si pasamos la option --stats nos devuelve un texto con estadísticas básicas so
 #### Ejemplo
 
 ```sh
- $ md_checkLinks <path-to-file> --stats
+$ md_checkLinks <path-to-file> --stats
 
  Total: 3
 Unique: 3 
@@ -113,7 +113,7 @@ Si pasamos estas dos options combinadas obtenemos  estadísticas que necesiten d
 #### Ejemplo
 
 ```sh
-md_checkLinks <path-to-file> --stats --validate
+$ md_checkLinks <path-to-file> --stats --validate
 Total: 3
 Unique: 3
 Broken: 1
