@@ -126,16 +126,14 @@ Broken: 1
 
 `const mdLinks = require('@danirami/bog001-md-links')`
 
-_Cualquiera de las dos opciones va a retornar un arreglo de objetos de links:_
-
- ``[{ href, text, file }]``
-
-
-`mdLinks("./some/example.md").then(data => console.log(data))`
-
+_ Va a retornar un arreglo de objetos de links:_
 
 `mdLinks("./some/example.md" { validate: false }).then(data => console.log(data))`
 
+
+ ``[{ href, text, file }]``
+
+ 
 
 
 
