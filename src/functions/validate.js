@@ -92,7 +92,7 @@ const validateLinks = (arrLinks) => {
         }
       })
       .catch((err) => {
-        resolve(err);
+        resolve(err); // Error: no conexión a internet
       });
   }));
 

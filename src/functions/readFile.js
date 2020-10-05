@@ -7,7 +7,7 @@ const getAbsolutePath = (route) => (path.isAbsolute(route) ? route : path.resolv
 // console.log('hola', getAbsolutePath('test/docs/README-TEST.md'));
 
 /* ---------- Confirmar si el path es archivo ----------*/
-const itsFile = (route) => fs.lstatSync(route).isFile();
+const itsFile = (route) => fs.lstatSync(route).isFile(); // retorna true si es file
 
 /* const itsFolder = (route) => fs.lstatSync(route).isDirectory(); */
 
@@ -28,12 +28,11 @@ const fileExt = (route) => path.extname(route);
 // console.log('Extensión del archivo', fileExt('test/md-links.spec.js'));
 
 /* ---------- Recursión ----------*/
-
 const getMdFiles = (route) => {
   let arrFiles = [];
   const routeAbsolute = getAbsolutePath(route);
   // Por si es archivo
-  if (itsFile(routeAbsolute) === true) {
+  if (itsFile(routeAbsolute)) {
     if (fileExt(routeAbsolute) === '.md') {
       arrFiles.push(routeAbsolute);
     }
@@ -47,21 +46,36 @@ const getMdFiles = (route) => {
   return arrFiles;
 };
 
-/* console.log(getMdFiles('test/')); */
+console.log(getMdFiles('test/'));
 
 /* ---------- Leer archivo y extraer data ----------*/
 const readFile = (file) => fs.readFileSync(file, 'utf-8', (error, data) => {
   if (error) {
-    return new Error('Error en la ruta');
+    return new Error('Error en la ruta'); // Error: error en la ruta
   }
   return data;
 });
 
-// console.log(readFile('test/docs/docs-2/README-TEST-2.md'));
+/* console.log(readFile('test/docs/docs-2/EADME-TEST-2.md')); */
+
+/* const readFile = (route) => new Promise((resolve, reject) => {
+  fs.readFile(route, 'utf8', (err, data) => {
+    if (err) {
+      reject(console.error('Error en la ruta'));
+    }
+    resolve(data);
+  });
+});
+
+readFile('test/docs/docs-2/README-TEST-2.md')
+  .then(res => console.log(res));
+  .catch(err => console.log(err)); */
 
 /* ---------- Obtener links ----------*/
 
 // ¿Esta debería ser una promesa?
+// getLinks solo saca los links de un archivo, cuando sea directorio si puedo hacer forEach
+// getLinks recibe la data del archivo leído
 
 const getLinks = (route) => {
   // eslint-disable-next-line no-useless-escape
@@ -87,7 +101,7 @@ const getLinks = (route) => {
       const getLinksWithUrl = links.filter((link) => !link.href.startsWith(internalLinks));
       return arrObjLinks.push(getLinksWithUrl);
     }
-    return (new Error('No hay links en este archivo :(')); // No entra aquí :(
+    return (new Error('No hay links en este archivo :(')); // No entra aquí :( // Error: por si no hay links
   });
 
   return arrObjLinks.flat(); // Para que me elimine el arr dentro de arr
