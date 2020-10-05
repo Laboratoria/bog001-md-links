@@ -8,7 +8,7 @@ Para instalar esta libreria debe hacer lo siguiente en la linea de comando
 
 ### INSTALACION
 
-`$ npm install @danirami/bog001-md-links@1.2.0`
+`$ npm install @danirami/bog001-md-links@0.1.0`
 
 
 ### USO
@@ -125,7 +125,7 @@ Broken: 1
 
 `const mdlinks = require('@danirami/bog001-md-links')`
 
-_Cualquiera de las dos opciones te retornar un arreglo de objetos de links:_
+_Cualquiera de las dos opciones va a retornar un arreglo de objetos de links:_
 
  ``[{ href, text, file }]``
 
