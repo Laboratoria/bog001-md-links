@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const getLinks = require('../src/functions/readFile.js');
 const mocks = require('./docs/mocksArr.js');
 const validate = require('../src/functions/validate.js');
