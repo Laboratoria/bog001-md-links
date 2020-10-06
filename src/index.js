@@ -1,25 +1,42 @@
-const getLinks = require('./functions/readFile.js');
-const validate = require('./functions/validate.js');
-const mocks = require('../test/docs/mocksArr.js');
+const fs = require('fs');
+const { getMdFiles, getLinksFiles } = require('./functions/readFile.js');
+const validateLinks = require('./functions/validate.js');
+/* const mocks = require('../test/docs/mocksArr.js'); */
 
-/* ---------- Ruta absoluta ----------*/
-// const toAbsolutePath = (path) => {resolve(path)}
+/* ---------- Confirma si el path es válido ----------*/
+const pathExists = (route) => fs.existsSync(route);
 
 /* ---------- Function mdLinks ----------*/
-const mdLinks = (path, options) => {
-  // 1. ¿Resolver a ruta absoluta?
-  // 2. Definir si es archivo o file ++ 3. ¿Es .md?
-  // 4. Leer archivo ++ 5. Extraer links
-  // 6. Verificar si cumple con alguna de las cuatro condiciones
-  //    - Sin options
-  //    - Validate
-  //    - Stats
-  //    - Validate + Stats
+const mdLinks = (path, { validate }) => {
+  if (pathExists(path)) {
+    const arrFiles = getMdFiles(path);
+    console.log(arrFiles);
+    return Promise.all(getLinksFiles(arrFiles))
+      .then((arrObjsLinks) => arrObjsLinks.flat()) // Para que elimine el arr dentro de arr
+      .then((res) => {
+        if (validate) {
+          return validateLinks(res);
+        }
+        return res;
+      })
+      .catch(() => new Error('No hay links en este archivo :('));
+  }
+  throw Error('Hubo un error en la ruta :(');
 };
 
+// FOLDER
+/* mdLinks('test/docs/docs-2/docs-3', { validate: true })
+  .then((res) => console.log(res))
+  .catch((error) => console.error(error)); */
+
+// FILE
+mdLinks('test/docs/docs-2/docs-3/oootraPruebita.md', { validate: true })
+  .then((res) => console.log(res))
+  .catch((error) => console.error(error));
+
 /* ---------- Invocación otras funciones ----------*/
-console.log(getLinks('test/docs'));
-/* .then((res) => console.log(res))
+/* getLinks('test/docs/docs-2/README-TEST-2.md')
+  .then((res) => console.log(res))
   .catch((err) => console.log(err)); */
 
 /* validate.validateLinks(mocks.mockLinksInfo)
