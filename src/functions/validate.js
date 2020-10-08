@@ -7,36 +7,29 @@ const fetch = require('node-fetch');
 
 /* ---------- Validate Links ----------*/
 const validateLinks = (arrLinks) => {
-  const arrPromises = arrLinks.map((singleLink) => new Promise((resolve) => {
+  const arrPromises = arrLinks.map((singleLink) => {
     const link = singleLink;
 
-    if (!/^https?:\/\//i.test(link.href)) {
+    if (!/^https?:\/\//i.test(link.href)) { // Regex comprueba que no existe https
       link.href = `http://${link.href}`;
     }
 
     return fetch(link.href)
       .then((res) => {
         if (res.status >= 200 && res.status < 400) {
-          link.status = res.status;
-          link.statusText = res.statusText;
-          resolve(link);
-        } else {
-          link.status = res.status;
-          link.statusText = 'Fail';
-          resolve(link);
+          return { ...link, status: res.status, statusText: res.statusText };
         }
+        return { ...link, status: res.status, statusText: 'Fail' };
       })
-      .catch((err) => {
-        resolve(err); // Error: no conexión a internet
-      });
-  }));
+      .catch((err) => (err)); // Error: No hay conexión a internet ¿?
+  });
 
   return Promise.all(arrPromises);
 };
 
 /* validateLinks(linksFolderDocs)
-  .then((res) => console.log(res)); */
-/* .catch(err => console.log(err)); */ // ¿Por qué ESLINT no me deja tenerlo? :(
+  .then(console.log)
+  .catch(console.error); */
 
 /* ---------- Stats Links (Unique + Total) ----------*/
 /* const getStats = (arrLinks) => {
