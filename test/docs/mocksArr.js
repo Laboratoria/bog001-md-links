@@ -3,7 +3,7 @@ const mocks = {};
 // Array con objetos
 const mockLinksInfo = [
   {
-    href: 'www.facebook.com',
+    href: 'www.facebuk.cm', // Cambiar
     text: 'Facebook Uno',
     path: '/Users/Ana/Desktop/bog001-md-links/test/docs/README-TEST.md',
   },
@@ -78,12 +78,6 @@ const mockLinksValidate = [
     statusText: 'Fail',
   },
 ];
-
-// Paths
-/* const userAbsolutePath = '/Users/Ana/Desktop/bog001-md-links/test/docs/README-TEST.md';
-const userRelativePath = 'test/docs/README-TEST.md';
-const userInvalidPath = '/Users/Ana/Desktop/bog001-md-links/package-lock.json';
-const userWithoutLinksPath = 'test/docs/README-TEST-NOLINKS.md'; */
 
 // Mock keys
 mocks.mockLinksInfo = mockLinksInfo;
