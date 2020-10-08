@@ -1,16 +1,11 @@
 const fetch = require('node-fetch');
-// const mocks = require('../../test/docs/mocksArr.js');
-
-// Pruebita de Fetch
-/* fetch('https://es.wikipedia.org/wiki/Markdown')
-  .then(res => console.log(res, res.status, res.statusText)) */
 
 /* ---------- Validate Links ----------*/
 const validateLinks = (arrLinks) => {
   const arrPromises = arrLinks.map((singleLink) => {
     const link = singleLink;
 
-    if (!/^https?:\/\//i.test(link.href)) { // Regex comprueba que no existe https
+    if (!/^https?:\/\//i.test(link.href)) { // Regex comprueba que !https
       link.href = `http://${link.href}`;
     }
 
@@ -21,35 +16,13 @@ const validateLinks = (arrLinks) => {
         }
         return { ...link, status: res.status, statusText: 'Fail' };
       })
-      .catch((err) => (err)); // Error: No hay conexión a internet ¿?
+      .catch((err) => ({ ...link, status: err.errno, statusText: err.code }));
   });
-
   return Promise.all(arrPromises);
 };
 
-/* validateLinks(linksFolderDocs)
+/* validateLinks(mockLinksInfo)
   .then(console.log)
   .catch(console.error); */
-
-/* ---------- Stats Links (Unique + Total) ----------*/
-/* const getStats = (arrLinks) => {
-  const totalLinks = arrLinks.length;
-  const linksUniqueArray = [...new Set(arrLinks.map(link => link.href))];
-  console.log (linksUniqueArray)
-
-  return `
-  Total = ${totalLinks}
-  Unique = ${linksUniqueArray.length}`;
-} */
-
-/* console.log(getStats(mocks.mockLinksInfo)) */
-
-/* ---------- Get broken links ----------*/
-/* const getBrokenValues = (arrLinksValidate) => {
-  const failedLinks = arrLinksValidate.filter((link) => link.statusText === 'Fail');
-  return `Broken = ${failedLinks.length}`;
-} */
-
-/* console.log(getBrokenValues(mocks.mockLinksValidate)) */
 
 module.exports = validateLinks;
