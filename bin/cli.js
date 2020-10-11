@@ -23,16 +23,47 @@ program.parse(process.argv);
 const path = process.argv[2];
 
 /* ---------- Solo mdLinks ---------- */
-if (!program.validate && !program.stats) {
+/* if (!program.validate && !program.stats) {
   mdLinks(path, { validate: false })
     .then(console.log)
     .catch(console.error);
-}
+} */
 
+// (color && ![{},{}])
+if (!program.validate && !program.stats) {
+  mdLinks(path, { validate: false })
+    .then((links) => links.forEach(({ // Elimina el [{},{}]
+      href, text, file,
+    }) => {
+      console.log(`
+    \r${chalk.hex('5dc1b9').bold('href:')} ${chalk.white(href)}
+    \r${chalk.hex('5dc1b9').bold('Text:')} ${chalk.white(text)}
+    \r${chalk.hex('5dc1b9').bold('File:')} ${chalk.white(file)}
+    `);
+    }))
+    .catch(console.error);
+}
 /* ---------- Validate ---------- */
-if (program.validate && !program.stats) {
+/* if (program.validate && !program.stats) {
   mdLinks(path, { validate: true })
     .then(console.log)
+    .catch(console.error);
+} */
+
+// (color && ![{},{}])
+if (program.validate && !program.stats) {
+  mdLinks(path, { validate: true })
+    .then((links) => links.forEach(({ // Elimina el [{},{}]
+      href, text, file, status, statusText,
+    }) => {
+      console.log(`
+      \r${chalk.hex('5dc1b9').bold('href:')}${chalk.white(href)}
+      \r${chalk.hex('5dc1b9').bold('Text:')}${chalk.white(text)}
+      \r${chalk.hex('5dc1b9').bold('File:')}${chalk.white(file)}
+      \r${status < 400 ? chalk.green('Status:', status) : chalk.red('Status:', status)}
+      \r${statusText === 'OK' ? chalk.green('StatusText:', statusText) : chalk.red('StatusText:', statusText)}
+      `);
+    }))
     .catch(console.error);
 }
 
