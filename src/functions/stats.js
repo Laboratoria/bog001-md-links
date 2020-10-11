@@ -11,7 +11,7 @@ const getStats = (arrLinks) => {
 const getStatsValidate = (arrLinksValidate) => {
   const totalLinks = arrLinksValidate.length;
   const linksUniqueArray = [...new Set(arrLinksValidate.map((link) => link.href))];
-  const failedLinks = arrLinksValidate.filter((link) => link.statusText === 'Fail');
+  const failedLinks = arrLinksValidate.filter((link) => link.statusText !== 'OK');
 
   return { Total: totalLinks, Unique: linksUniqueArray.length, Broken: failedLinks.length };
 };
