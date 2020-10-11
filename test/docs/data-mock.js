@@ -43,6 +43,66 @@ const dataLinksInfo = [
   },
 ];
 
+// mdLinks
+const mdLinksValidateTrue = [
+  {
+    href: 'https://jestjs.io/es-ES/',
+    text: 'Jest',
+    file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/card-validation.md',
+    status: 200,
+    statusText: 'OK',
+  },
+  {
+    href: 'https://jestjs.io/docs/es-ES/getting-started',
+    text: 'Testeo de tus funciones',
+    file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/card-validation.md',
+    status: 200,
+    statusText: 'OK',
+  },
+  {
+    href: 'https://www.figma.com/',
+    text: 'Figma',
+    file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/card-validation.md',
+    status: 200,
+    statusText: 'OK',
+  },
+  {
+    href: 'https://github.com/Laboratoria/bootcamp/tree/master/topics/shell',
+    text: 'UNIX Shell',
+    file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/card-validation.md',
+    status: 200,
+    statusText: 'OK',
+  },
+  {
+    href: 'https://jestjs.io/es-ES/',
+    text: 'Jest 2',
+    file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/card-validation.md',
+    status: 200,
+    statusText: 'OK',
+  },
+  {
+    href: 'https://help.github.com/artics/cloning-a-repository/',
+    text: 'Clonar (Link fake)',
+    file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/card-validation.md',
+    status: 404,
+    statusText: 'Fail',
+  },
+  {
+    href: 'http://omg.dah.com',
+    text: '¡OMG! Esto no existe (Error)',
+    file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/card-validation.md',
+    status: 'Error (EPROTO)',
+    statusText: 'Error code (EPROTO)',
+  },
+  {
+    href: 'http://wtf.esp.cre',
+    text: '¡WTF! Esto no existe (Error)',
+    file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/card-validation.md',
+    status: 'Error (ENOTFOUND)',
+    statusText: 'Error code (ENOTFOUND)',
+  },
+];
+
 // Validar Links
 const dataLinksValidate = [
   {
@@ -93,5 +153,6 @@ const dataLinksValidate = [
 mocks.dataFilesMd = dataFilesMd;
 mocks.dataLinksInfo = dataLinksInfo;
 mocks.dataLinksValidate = dataLinksValidate;
+mocks.mdLinksValidateTrue = mdLinksValidateTrue;
 
 module.exports = mocks;

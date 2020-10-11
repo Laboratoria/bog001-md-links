@@ -1,48 +1,44 @@
-const getLinks = require('../src/functions/readFile.js');
-const mocks = require('./docs/mocksArr.js');
-const validate = require('../src/functions/validate.js');
+const mdLinks = require('../src/index.js');
+const mocks = require('./docs/data-mock.js');
 
-/* ---------- Leer archivo y extraer links ----------*/
-describe('getLinks', () => {
-  it('Debería ser una función', () => {
-    expect(typeof getLinks).toBe('function');
-  });
-
-  it('Retorna un array con objetos {href, text, file}', () => {
-    const userPath = 'test/docs/README-TEST.md';
-    return getLinks(userPath).then((links) => {
-      expect(links).toEqual(mocks.mockLinksInfo);
-    });
-  });
-
-  it('Falla cuando no hay links en un archivo', () => {
-    const userPath = 'test/docs/README-TEST-NOLINKS.md';
-    return getLinks(userPath).catch((e) => {
-      expect(e.message).toBe('No hay links en este archivo :(');
-    });
-  });
-
-  it('Falla cuando la ruta es incorrecta', () => {
-    const userPath = 'test/docs/REDME-TEST.md';
-    return getLinks(userPath).catch((e) => {
-      expect(e.message).toBe('Hubo un error en la ruta :(');
-    });
-  });
-});
-
-/* ---------- Validar los links de los archivos ----------*/
+/* ---------- mdlinks ----------*/
 describe('validateLinks', () => {
   it('Debería ser una función', () => {
-    expect(typeof validate.validateLinks).toBe('function');
+    expect(typeof mdLinks).toBe('function');
   });
 
-  it('Retorna un array con objetos {href, text, file, status, statusText}', () => validate.validateLinks(mocks.mockLinksInfo).then((links) => {
-    expect(links).toEqual(mocks.mockLinksValidate);
-  }));
+  it('Lanza error si el path no existe', () => {
+    expect(() => {
+      const userPath = 'test/md-links.spec.js/dospuntospe';
+      mdLinks(userPath, { validate: false });
+    }).toThrow('Verifica el path, ruta no encontrada');
+  });
 
-  /* it('Falla cuando no se puede hacer la petición (Sin internet)', () => {
-    return validate.validateLinks('aqui no sé').catch(e => {
-        expect(e.message).toBe('aquí tampoco sé')
-    })
-  }); */
+  it('Retorna [] cuando no es archivo .md', () => {
+    const userPath = 'test/md-links.spec.js';
+    return mdLinks(userPath, { validate: false }).then((links) => {
+      expect(links).toEqual([]);
+    });
+  });
+
+  it('Retorna [] cuando no el archivo no tiene links', () => {
+    const userPath = 'test/docs/docs-2/no-links.md';
+    return mdLinks(userPath, { validate: false }).then((links) => {
+      expect(links).toEqual([]);
+    });
+  });
+
+  it('Retorna array con objetos {href, text, file, status, statusText} en archivo', () => {
+    const userPath = 'test/docs/docs-2/card-validation.md';
+    return mdLinks(userPath, { validate: true }).then((links) => {
+      expect(links).toEqual(mocks.mdLinksValidateTrue);
+    });
+  });
+
+  it('Retornar [{}, {}] con links de todos los .md del folder', () => {
+    const userPath = 'test/docs/docs-2';
+    return mdLinks(userPath, { validate: true }).then((links) => {
+      expect(links).toHaveLength(21);
+    });
+  });
 });
