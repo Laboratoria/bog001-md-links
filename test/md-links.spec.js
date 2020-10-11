@@ -36,8 +36,8 @@ describe('validateLinks', () => {
   });
 
   it('Retornar [{}, {}] con links de todos los .md del folder', () => {
-    const userPath = 'test/docs/docs-2';
-    return mdLinks(userPath, { validate: true }).then((links) => {
+    const userPath = '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2';
+    return mdLinks(userPath, { validate: false }).then((links) => {
       expect(links).toHaveLength(21);
     });
   });

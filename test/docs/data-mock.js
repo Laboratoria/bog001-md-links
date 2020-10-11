@@ -149,10 +149,36 @@ const dataLinksValidate = [
   },
 ];
 
+// Fail test
+const failTest = [
+  { file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/card-validation.md', href: 'https://jestjs.io/es-ES/', text: 'Jest' },
+  { file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/card-validation.md', href: 'https://jestjs.io/docs/es-ES/getting-started', text: 'Testeo de tus funciones' },
+  { file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/card-validation.md', href: 'https://www.figma.com/', text: 'Figma' },
+  { file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/card-validation.md', href: 'https://github.com/Laboratoria/bootcamp/tree/master/topics/shell', text: 'UNIX Shell' },
+  { file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/card-validation.md', href: 'https://jestjs.io/es-ES/', text: 'Jest 2' },
+  { file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/card-validation.md', href: 'https://help.github.com/artics/cloning-a-repository/', text: 'Clonar (Link fake)' },
+  { file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/card-validation.md', href: 'http://omg.dah.com', text: '¡OMG! Esto no existe (Error)' },
+  { file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/card-validation.md', href: 'http://wtf.esp.cre', text: '¡WTF! Esto no existe (Error)' },
+  { file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/card-validation.md', href: 'https://jestjs.io/es-ES/', text: 'Jest' },
+  { file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/card-validation.md', href: 'https://jestjs.io/docs/es-ES/getting-started', text: 'Testeo de tus funciones' },
+  { file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/card-validation.md', href: 'https://www.figma.com/', text: 'Figma' },
+  { file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/card-validation.md', href: 'https://github.com/Laboratoria/bootcamp/tree/master/topics/shell', text: 'UNIX Shell' },
+  { file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/card-validation.md', href: 'https://jestjs.io/es-ES/', text: 'Jest 2' },
+  { file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/card-validation.md', href: 'https://help.github.com/artics/cloning-a-repository/', text: 'Clonar (Link fake)' },
+  { file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/card-validation.md', href: 'omg.dah.com', text: '¡OMG! Esto no existe (Error)' },
+  { file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/card-validation.md', href: 'wtf.esp.cre', text: '¡WTF! Esto no existe (Error)' },
+  { file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/docs-3/data-lovers.md', href: 'https://css-tricks.com/snippets/css/a-guide-to-flexbox/', text: 'Uso de flexbox en CSS.' },
+  { file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/docs-3/data-lovers.md', href: 'https://pages.github.com/', text: 'GitHub Pages' },
+  { file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/docs-3/data-lovers.md', href: 'https://pages.github.com/', text: 'GitHub Pages 2' },
+  { file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/docs-3/data-lovers.md', href: 'https://es.wikipedia.org/wiki/Historias_de_usuario', text: 'Historias de Usuario' },
+  { file: '/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/docs-3/data-lovers.md', href: 'https://medium.com/laboratoria-how-to/vanillajs-vs-jquery-31e623bbd46e', text: 'vanilla JavaScript' },
+];
+
 // Mock keys
 mocks.dataFilesMd = dataFilesMd;
 mocks.dataLinksInfo = dataLinksInfo;
 mocks.dataLinksValidate = dataLinksValidate;
 mocks.mdLinksValidateTrue = mdLinksValidateTrue;
+mocks.failTest = failTest;
 
 module.exports = mocks;
