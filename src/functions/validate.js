@@ -16,7 +16,7 @@ const validateLinks = (arrLinks) => {
         }
         return { ...link, status: res.status, statusText: 'Fail' };
       })
-      .catch((err) => ({ ...link, status: err.errno, statusText: err.code }));
+      .catch((err) => ({ ...link, status: `Error (${err.errno})`, statusText: `Error code (${err.code})` }));
   });
   return Promise.all(arrPromises);
 };
