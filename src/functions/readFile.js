@@ -62,10 +62,6 @@ const getLinks = (route) => new Promise((res, rej) => {
   });
 });
 
-/* getLinks('/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2/vacio.md')
-  .then((res) => console.log(res))
-  .catch((err) => console.log(err)); */
-
 /* ---------- Obtener links de array archivos .md ---------- */
 const filesPromises = [];
 

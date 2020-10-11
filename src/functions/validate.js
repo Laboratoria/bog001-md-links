@@ -21,8 +21,4 @@ const validateLinks = (arrLinks) => {
   return Promise.all(arrPromises);
 };
 
-/* validateLinks(mockLinksInfo)
-  .then(console.log)
-  .catch(console.error); */
-
 module.exports = validateLinks;

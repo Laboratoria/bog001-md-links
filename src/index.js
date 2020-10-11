@@ -23,9 +23,4 @@ const mdLinks = (route, { validate }) => {
   throw Error('Verifica el path, ruta no encontrada');
 };
 
-// Folder
-mdLinks('/Users/Ana/Desktop/bog001-md-links/test/docs/docs-2', { validate: true })
-  .then((res) => console.log(res))
-  .catch((error) => console.error(error));
-
 module.exports = mdLinks;
