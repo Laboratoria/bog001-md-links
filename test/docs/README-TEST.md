@@ -6,12 +6,13 @@
 
 ## 1. Ejemplitos lindos
 
-¡Hola! Este es un readme que tiene varios ejemplos de links que se deberían verificar. En total son 7 links, 6 únicos y 1 que no funciona.
+¡Hola! Este es un readme que tiene varios ejemplos de links que se deberían verificar. En total son 6 links, 5 únicos y 1 broken.
 
 * [Facebook Uno](www.facebook.com)
+* [Facebook Dos](www.facebook.com)
 * [Markdown](https://es.wikipedia.org/wiki/Markdown)
 * [Node.js](https://nodejs.org/es/)
-* [Facebook Dos](www.facebook.com)
+
 
 Aquí hay un link con una foto:
 
@@ -19,4 +20,4 @@ Aquí hay un link con una foto:
 
 Y por aquí hay un link que no existe y debería fallar:
 
-* [Link fake](https://platzi.com/clases/progrbasica/)
+* [Link fake de platzi](https://platzi.com/clases/progrbasica/)
