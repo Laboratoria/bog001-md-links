@@ -1,4 +1,32 @@
 {
-  "name": "md-links",
-  "version": "0.1.0"
+  "name": "blarteagar-mdlinks",
+  "version": "1.0.0",
+  "description": "mdlinks project",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blarteagar/bog001-md-links.git"
+  },
+  "keywords": [
+    "markdown"
+  ],
+  "author": "blarteagar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blarteagar/bog001-md-links/issues"
+  },
+  "homepage": "https://github.com/blarteagar/bog001-md-links#readme",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "figlet": "^1.5.0",
+    "inquirer": "^7.3.3",
+    "jsdom": "^16.4.0",
+    "showdown": "^1.9.1"
+  }
 }

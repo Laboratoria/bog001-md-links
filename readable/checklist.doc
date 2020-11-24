@@ -1,0 +1,64 @@
+# Markdown Links Blanca Arteaga
+
+Mi proceso de trabajo con MD-Links
+
+El objetivo de este proyecto es crear mi propia librería, usando node.js.
+
+Utilicé los conocimientos obtenidos en los cursos de LinkedIn Learning.
+Comencé por aprender los fundamentos de node.js: instalación, npm, configuración de servidores, lectura de archivos, configuración de json y depuración de código.
+
+Historias de Usuario
+HU1: Yo como developer, quiero abrir un archivo *.md para ver su contenido.
+HU2: Yo como developer, quiero detectar links en el archivo *.md para extraer algunas de sus características.
+HU3: Yo como developer, quiero abrir links de archivos para detectar si funcionan o no.
+
+Tareas:
+1. spikes sobre node.
+2.
+3.
+4.
+5.
+6.
+
+# Recursos que he empleado para aprender
+
+[repositorio] ('https://github.com/Laboratoria/bog001-md-links)
+[readme.md] (https://github.com/blarteagar/bog001-md-links/blob/master/README.md)
+
+Cursos LinkedIn Learning que te recomiendo:
+
+JavaScript Esencial: https://www.linkedin.com/learning/javascript-esencial
+Node.js Esencial: https://www.linkedin.com/learning/node-js-esencial
+Node.js Trucos: https://www.linkedin.com/learning/node-js-trucos
+
+## 9. Checklist
+
+### General
+
+* [ ] Puede instalarse via `npm install --global <github-user>/md-links`
+
+### `README.md`
+
+* [ ] Un board con el backlog para la implementación de la librería.
+* [ ] Documentación técnica de la librería.
+* [ ] Guía de uso e instalación de la librería
+
+### API `mdLinks(path, opts)`
+
+* [ ] El módulo exporta una función con la interfaz (API) esperada.
+* [ ] Implementa soporte para archivo individual
+* [ ] Implementa soporte para directorios
+* [ ] Implementa `options.validate`
+
+### CLI
+
+* [ ] Expone ejecutable `md-links` en el path (configurado en `package.json`)
+* [ ] Se ejecuta sin errores / output esperado
+* [ ] Implementa `--validate`
+* [ ] Implementa `--stats`
+
+### Pruebas / tests
+
+* [ ] Pruebas unitarias cubren un mínimo del 70% de statements, functions,
+  lines, y branches.
+* [ ] Pasa tests (y linters) (`npm test`).

@@ -1,5 +1,185 @@
-# Markdown Links
+# blarteagar/MDLinks Library
+Blanca Arteaga - BOG-001 Laboratorian (May-Nov 2020)
+Aquí se describen los aspectos relevantes para el uso de la librería MD-Links
 
+# Descripción del módulo
+MD-Links es un módulo que permite analizar archivos *.md para encontrar el número de enlaces (ligas, links) presentes en el mismo. Para ello, el usuario debe ingresar una ruta (path) y las opciones de proceso:
+-v para validar los links
+-s para estadísticas sobre los enlaces
+Es posible omitir las opciones, o bien invocarlas en combinación o por separado.
+El comportamiento por defecto devuelve al usuario un objeto que, por cada link encontrado, muestra los siguientes resultados:
+"href": URL encontrada
+"text": Texto que aparece dentro del link
+"file": Ruta del archivo donde se encontró el link (truncado a 50 caracteres)
+...
+
+# Instrucciones de uso e instalación
+Para instalar el módulo, introducir este comando en el CLI:
+>npm install md-links
+...
+
+# Documentación del API
+...
+
+# Ejemplos
+...
+
+
+---FIN DEL MANUAL DE USO E INSTALACION---
+# (Notas mentales)
+El objetivo de este proyecto es crear mi propia librería, usando node.js. Utilicé los conocimientos obtenidos en los cursos de LinkedIn Learning "Node.js esencial": instalación de node.js y npm, sintaxis de node, configuración de servidores, lectura de archivos, configuración de json y depuración de código.
+También es interesante conocer un poco sobre markdown, su sintaxis y la manera de obtener etiquetas a, href, text (markdown autocompleta etiquetas HTML! :O). Esto lo iré haciendo en paralelo con las pruebas manuales: prepararé algunos archivos markdown para tenerlos en una carpeta "readable" y analizar sus contenidos.
+Estoy creando una librería (conjunto de funciones o métodos que cumplen propósitos específicos) que deseo publicar en npm en forma de un módulo (que se pueda invocar con el comando 'require'). Para que sea instalable, el código fuente debe estar publicado en GitHub.
+Veo que parte importante de este proyecto se trata de analizar el texto markdown para encontrar los links "http:", y una vez obtenidos, hacer las peticiones web para verificar el estado de los archivos.
+Análisis de la ruta: Intenté primero con expresiones regulares, pero el resultado es engorroso. Luego vi que podía usar el módulo nativo de node "path" para resolver rutas absolutas a relativas.
+Extracción de los links y textos: puedo usar jsdom, marked u otras librerías para eso. Usar expresiones regulares también puede ser engorroso en este caso.
+
+
+# Historias de Usuario
+HU1: Yo como developer quiero usar node.js para leer una ruta a un archivo *.md y las opciones de procesamiento.
+HU2: Yo como developer quiero recorrer un archivo *.md para determinar cuántos links contiene y obtener algunas de sus propiedades.
+HU3: Yo como developer quiero probar cada link del archivo *.md para verificar la respuesta obtenida.
+HU4: Yo como developer quiero generar un módulo instalable de mi paquete para su uso por parte de la comunidad de npm.
+
+# Tareas de la Aplicación
+* [ ] 1. Ingresar datos mediante la línea de comandos CLI (process.argv)
+* [x] 1.1. Leer la ruta (route)
+* [x] 1.2. Leer opción validate (validate or -v)
+* [x] 1.3. Leer opción stats (stats or -s)
+* [x] 1.4. Confirmar los valores mostrados en pantalla
+* [x] 1.5. Exportar los datos a otros módulos de la aplicación
+* [ ] 1.6. Realizar pruebas unitarias de este módulo
+
+* [ ] 2. Procesar los datos recibidos desde la línea de comandos (CLI)
+* [ ] 2.1. Verificar que se puedan recibir los datos desde la línea de comandos
+* [x] 2.2. Definir si la ruta conduce a un archivo o a una carpeta (módulo path)
+* [x] 2.3. En caso de ser archivo, definir si es *.md (módulo path)
+* [x] 2.4. Arrojar error si el archivo no es markdown (módulo path)
+* [x] 2.5. Si la ruta es absoluta, está bien (módulo path)
+* [x] 2.6. Si es relativa, debe resolverse a absoluta (módulo path)
+* [x] 2.7. Verificar el estado (activo o inactivo) de la opción validate
+* [x] 2.8. Verificar el estado (activo o inactivo) de la opción stats
+* [ ] 2.9. Realizar pruebas unitarias de este módulo
+
+* [ ] 3. Abrir los archivos *.md para ver su contenido (fs)
+* [ ] 3.1. Si la ruta conduce a directorio, abrir todos los *.md presentes (withFileTypes=True, ¿recursión?)
+* [ ] 3.2. Manejar errores al abrir archivos (acceso al objeto de errores)
+* [x] 3.2.1. Error en la extensión del archivo
+* [x] 3.2.2. Error en la ruta (Archivo no encontrado)
+* [x] 3.2.3. Error en la data (Archivo corrupto)
+* [ ] 3.3. Realizar pruebas unitarias de este módulo
+
+* [ ] 4. Analizar el contenido de los archivos (RegExp, "showdown")
+* [x] 4.1. Mostrar el contenido del archivo *.md
+* [x] 4.2. Convertir el texto *.md en html para distinguir más fácilmente las etiquetas.
+* [ ] 4.3. Crear un objeto "estandar" que contenga, por cada link:
+* [x] 4.3.1. "href": URL encontrada
+* [x] 4.3.2. "text": Texto que aparecía dentro del link
+* [x] 4.3.3. "file": Ruta del archivo donde se encontró el link (50 chars)
+
+* [ ] 5. Validate: Hacer peticiones http (RegExp, peticiones axios.get, http.get)
+* [ ] 5.1. De cada http encontrado, hacer petición HTTP
+* [ ] 5.2. Realizar pruebas unitarias de este módulo
+
+* [ ] 6. Stats: Analizar links repetidos (sort, filter, map)
+* [ ] 6.1. Detectar cuántos links se repiten dentro de un mismo archivo
+* [ ] 6.2. Hacer petición http para saber si el link está roto (peticiones axios.get, http.get)
+* [ ] 6.2. Realizar pruebas unitarias de este módulo
+
+* [ ] 7. Entregables
+* [ ] 7.1. Generar el paquete instalable
+* [ ] 7.1.1. Configurar package.json
+* [ ] 7.1.2. Subir el código al repositorio de github
+* [ ] 7.2. Haber realizado tests unitarios de cada módulo
+* [ ] 7.3. Crear el módulo ejecutable e instalable '@blarteagar/md-links'
+* [ ] 7.4. Redactar el README.md
+
+
+# Dailys
+30/09/2020 Q&A MDLinks con Lupe
+19/10/2020 uso de módulo fs para abrir archivos
+uso de métodos de string para determinar la extensión del archivo en la ruta.
+uso de RegExp para determinar si la ruta tiene un punto, en cuyo caso conduce a un archivo; y de lo contrario, conduce a una carpeta.
+uso de RegExp y métodos de string para determinar la extensión del archivo.
+uso del módulo readline para obtener la ruta desde la línea de comandos CLI.
+22/10/2020 enrutamiento: carpeta, archivo md o archivo inválido (expresiones regulares) NOP!
+24/10/2020 enrutamiento: carpeta, archivo md o archivo inválido (módulo path) YEP!
+26/10/2020 extracción de links con expresiones regulares NOP! Usar jsdom u otros.
+26/10/2020 OH con Lupe para ver mi progreso: Usar process.argv para mi HU1: Línea de comandos. Tengo OH mañana para que me explique modularización. Empecé a implementar process.argv.
+Hacking de extraer links con RegExp (necesito crear un objeto que agrupe todas las coincidencias) OH con Lupe.
+27/10/2020 Sprint Demo, super provechoso. Hacking yargs y líneas de comandos. OH con Lupe.
+27/10/2020 Ceremonias Sprint. Usé yargs para tratar de obtener argumentos del CLI (nope). OH Lupe, me recomendó process.argv. Otras recomendaciones: Importar mdlinks y todas las funciones relacionadas utilizando la ruta donde se encuentra el archivo, tal como se hacía con import y export. El archivo index.js es el punto de entrada.
+28/10/2020 Hacking con process.argv. Uso de marked para extracción de links. Modularización. OH Lupe. Q&A GitHub. Logrado: enrutar las entradas del CLI. Falta: modularizar. Hackear marked.
+29/10/2020 Para modularizar, creo que me hace falta repasar la sintaxis de las funciones.
+04/11/2020 He incorporado las funciones isVal e isAbs para procesar las rutas obtenidas en el CLI. Logré modularizar estas dos funciones. Utilicé module.exports = () => {} tal como lo pide Laboratoria en index.js de ejemplo.
+Logrado: Modularizar algunas funcionalidades (yeeeiii).
+Para hoy me quiero meter con JSDOM. Finalmente lo que hice fue continuar con el método que ya yo había probado con éxito (showdown y expresiones regulares). Me falta implementar un bucle ('while'?) que me permita recorrer todo el archivo y extraer todos los links.
+4pm Instalé chalk, figlet y enquirer para hacer más bonita e interactiva la interfaz.
+7pm El bucle while para recorrer los archivos parece funcionar, lo extraño son las expresiones regulares que no me están captando lo que necesito: me están capturando más de lo solicitado.
+5/11/2020 comencé la mañana revisando las RegExp. Quedaron tan complicadas que ahora no me devuelven nada.
+11am instalé JSDOM. Como requiere de entrada un texto HTML, pues vamos bien, pues ya tengo el convertidor.
+Otro Issue: No puedo abrir carpetas. Debo usar otro método: una cosa es openFile y otra openDir, tengo que crear una nueva función y llamarla (con modularización).
+Me voy a tomar una pausa.
+1230pm nop, no me quieren funcionar las expresiones regulares. Usaré JSDOM.
+06/11/2020 Lupe me ayudó con JSDOM :-) yeeeeiiii
+construir el array de objetos con la salida "estándar" de mi programa.
+conectar con args.js
+-cómo usar readfile como promesa (reject, resolve). (then/catch para procesos asíncronos)
+construir las funciones stats y validate
+-usar un método de arrays para determinar links repetidos (map, ?)
+-hacer peticiones http para determinar el status de los links (200, 404, etc.) (fetch)?
+09/11/2020 Daily: Ayer (Viernes 6/11/2020): OH Lupe, me ayudó a habilitar el paquete JSDOM para extraer los links del md-file. Espacio con Chavi storytelling. Sábado: Espacio con mentora. Simulacro entrevista RRHH.
+Hoy, estoy estudiándome los objetos. Encontré en mi LinkedIn Learning una estructura constructora de objetos y ¡me funciona! pero usa la _"pseudo-variable" this.
+Limpié código: no requiero llamar a la función convert (data, route) ya que la función openF() llama a convert en el momento en que se extrae la data.
+Estoy estudiando en el Laboratoria LMS, JS Deep Dive.
+Estudiando también con LinkedIn Learning.
+Estoy "modularizando" con llamados a funciones dentro de las funciones anteriores.
+
+Sprint Review 10/11/2020
+¿Qué cosas seguir haciendo bien?
+Usar LinkedIn Learning y Laboratoria LMS para continuar estudiando
+Probar código de una vez
+Planificar desde mi readme
+Planificar en GitHub Projects
+
+¿Qué debo dejar de hacer?
+Procrastinación y Postergación de mis tareas con Job Application
+Huirle a mis compañeras para no preguntarles las dudas que tengo
+Darle demasiadas vueltas al código: si funciona, lo uso y luego pregunto
+
+¿Qué debo hacer para mejorar?
+Dedicar mucho más tiempo a mi trabajo en Laboratoria (al menos 2 horas en la tarde cada día, y fines de semana 4 horas cada día)
+Preguntarle a Lupe todos los días
+Planificar, presentar mi propuesta y preguntar (PPP jejeje)
+Concentración: Dedicarme con método pomodoro a la solución de los problemas de código
+
+
+
+# Recursos BLAR
+[using module.exports](https://www.tutorialsteacher.com/nodejs/nodejs-module-exports)
+[comandos interactivos en node.js](http://7sabores.com/blog/crear-comando-interactivo-nodejs)
+[cómo crear un módulo de node.js](https://www.digitalocean.com/community/tutorials/how-to-create-a-node-js-module-es)
+[usando el CLI](https://tecnops.es/creando-nuestro-cli-command-line-interface-usando-nodejs/)
+[argumentos de la línea de comandos](https://nodejs.org/en/knowledge/command-line/how-to-parse-command-line-arguments/)
+[argumentosCLI](https://nodejs.org/docs/latest/api/process.html#process_process_argv)
+[requiring modules in node-js](https://www.freecodecamp.org/news/requiring-modules-in-node-js-everything-you-need-to-know-e7fbd119be8/)
+[JSDOM A guide on how to use it](https://www.testim.io/blog/jsdom-a-guide-to-how-to-get-started-and-what-you-can-do/)
+[]()luucamay:bandera-bo:  11:02
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+MDN Web DocsMDN Web Docs
+Array.prototype.forEach()
+The forEach() method executes a provided function once for each array element.
+De Lupe para todos:  10:31 AM
+readdirp
+De Lupe para todos:  10:52 AM
+https://github.com/jsdom/jsdom
+De Lupe para todos:  11:01 AM
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+
+
+
+
+---FIN DEL README PERSONAL BLANCA ARTEAGA---
 ## Índice
 
 * [1. Preámbulo](#1-preámbulo)
@@ -20,7 +200,7 @@
 ligero muy popular entre developers. Es usado en muchísimas plataformas que
 manejan texto plano (GitHub, foros, blogs, ...), y es muy común
 encontrar varios archivos en ese formato en cualquier tipo de repositorio
-(empezando por el tradicional `README.md`).
+(empezando por el popular `README.md`).
 
 Estos archivos `Markdown` normalmente contienen _links_ (vínculos/ligas) que
 muchas veces están rotos o ya no son válidos y eso perjudica mucho el valor de
@@ -59,8 +239,8 @@ A continuación puedes ver los objetivos de aprendizaje de este proyecto:
 
 ### JavaScript
 
-* [ ] Uso de condicionales (if-else | switch | operador ternario)
-* [ ] Uso de funciones (parámetros | argumentos | valor de retorno)
+* [x] Uso de condicionales (if-else | switch | operador ternario)
+* [x] Uso de funciones (parámetros | argumentos | valor de retorno)
 * [ ] Manipular arrays (filter | map | sort | reduce)
 * [ ] Manipular objects (key | value)
 * [ ] Uso ES modules ([`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)

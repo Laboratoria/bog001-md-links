@@ -1,0 +1,14 @@
+Paths to read:
+
+C:/Users/USER/Documents/data/bog001-md-links/src/folderOfMDFiles/blar.md
+C:/Users/USER/Documents/data/bog001-md-links/src/folderOfMDFiles/jpar.md
+C:/Users/USER/Documents/data/bog001-md-links/src/folderOfMDFiles/piar.md
+C:/Users/USER/Documents/data/bog001-md-links/src/folderOfMDFiles/resources.md
+C:/Users/USER/Documents/data/bog001-md-links/src/folderOfMDFiles/running.md
+
+./folderOfMDFiles/blar.md
+./folderOfMDFiles/jpar.md
+./folderOfMDFiles/piar.md
+./folderOfMDFiles/checklist.md
+./folderOfMDFiles/resources.md
+./folderOfMDFiles/running.md
