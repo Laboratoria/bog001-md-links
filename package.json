@@ -1,6 +1,6 @@
 {
   "name": "dlemus-mdlinks",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "dependencies": {
     "colors": "^1.4.0",
     "fetch": "^1.1.0",
