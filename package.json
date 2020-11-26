@@ -1,4 +1,31 @@
 {
-  "name": "md-links",
-  "version": "0.1.0"
+  "name": "dlemus-mdlinks",
+  "version": "0.1.0",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "fetch": "^1.1.0",
+    "marked": "^1.2.5",
+    "node-fetch": "^2.6.1",
+    "path": "^0.12.7"
+  },
+  "description": "Backend project Laboratoria Bootcamp Bogota by Diana Lemus",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dicaleme/bog001-md-links.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Dicaleme/bog001-md-links/issues"
+  },
+  "homepage": "https://github.com/Dicaleme/bog001-md-links#readme"
 }
