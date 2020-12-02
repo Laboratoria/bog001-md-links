@@ -69,14 +69,14 @@ const showStats = () => {
           uniqueLinks++;
           console.log(
             ` File: ${mdExtension}\n Text: ${allLinks[i].text}\n href: ${
-              allLinks[i].href
+              allLinks[i].link
             }\n ✔ *** Response code: ${response.status} ${response.statusText} ***✔\n`.brightCyan,
           );
         } else if (response.status == 404 || response.status == 400) {
           brokenLinks++;
           console.log(
             ` File: ${mdExtension}\n Text: ${allLinks[i].text}\n href: ${
-              allLinks[i].href
+              allLinks[i].link
             }\n ⚠ *** Response code: ${response.status} ${response.statusText} ***⚠\n`.brightRed,
           ); 
         } else {
@@ -127,7 +127,7 @@ const menuOptions = () => {
   validateLinks();
   } else if (options === '--stats') {
     console.log(showStats(mdExtension));
-  } else if (options === '--validate--stats') {
+  } else if (options === '--validate--stats' || '--stats--validate') {
     console.log(validateAndStats(mdExtension));
   }
 };
