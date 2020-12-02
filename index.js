@@ -1,15 +1,11 @@
 //https://sergiodxa.com/articles/crear-modulo-npm
 
 //https://nodejs.org/en/knowledge/file-system/how-to-read-files-in-nodejs/
+//https://www.w3schools.com/nodejs/shownodejs_cmd.asp?filename=demo_ref_path
 const fs = require("fs");
+//const path = require("path");
 const fetch = require('node-fetch');
 const colors = require("colors");
-//https://www.w3schools.com/nodejs/shownodejs_cmd.asp?filename=demo_ref_path
-/*const path = require('path');
-let filename = path.basename('/Users/Refsnes/demo_path.js'));
-console.log(filename);*/ 
-
-
 //https://nodejs.org/docs/latest/api/process.html#process_process_argv
 let index = process.argv.indexOf("--file");
 let mdExtension = process.argv[index + 1];
@@ -18,7 +14,7 @@ let data = fs.readFileSync(mdExtension, 'utf8')
 
 
 //Validates if the file has a .md extension
-function mdlinks (filename){
+function mdLinks (filename){
   if (filename.includes(".md")){
     console.log ("\n The file has a valid .md extension" .bgGrey.brightWhite.bold)
     return true;
@@ -28,11 +24,21 @@ function mdlinks (filename){
   }
 }
 
+/*const mdLinks = (mdExtension) => {
+  const fileExtension = path.extname(mdExtension);
+  if (fileExtension = '.md') {
+    console.log ("\n The file has a valid .md extension".bgGrey.brightWhite.bold);
+    return true;
+  } else {
+    console.log("\n There is an invalid file extension".bgGrey.brightRed.bold);
+    return false;
+  }*/
+
 //Function to get the links
 //https://regexr.com/ to test regular expressions
 const getLinks = (data) => {
-  const regExLink = /((https?:\/\/)|(http?:\/\/)|(www\.))[^\s\n)]+/g; 
-  const regExText = /(?:[^[])([^[]*)(?=(\]+\(((https?:\/\/)|(http?:\/\/)|(www\.))))/g;
+  const regExLink = /((https?:\/\/)|(http?:\/\/)|(www\.))[^\s\n)]+/g; // todos los tipos de links
+  const regExText = /(?:[^[])([^[]*)(?=(\]+\(((https?:\/\/)|(http?:\/\/)|(www\.))))/g; //el texto
   const toString = data.toString();
   const links = toString.match(regExLink);
   const text = toString.match(regExText);
@@ -40,7 +46,7 @@ const getLinks = (data) => {
   for (let i = 0; i < links.length; i++) {
     let collectionData = {
       text: text[i],
-      href: links[i],
+      link: links[i],
       file: mdExtension,
     };
     newData.push(collectionData);
@@ -52,12 +58,13 @@ const getLinks = (data) => {
 //https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/template_strings // interpolation
 //https://developer.mozilla.org/es/docs/Web/API/Fetch_API/Utilizando_Fetch
 const showStats = () => {
-  if (mdlinks(mdExtension) === true) {
+  if (mdLinks(mdExtension) === true) {
     allLinks = getLinks(data)
     let brokenLinks = 0;
     let uniqueLinks = 0;
     for (let i = 0; i < allLinks.length; i++) {
-      fetch(allLinks[i].href).then(response  => {
+      fetch(allLinks[i].link).then(response  => {
+        //await
         if (response.status == 200) {
           uniqueLinks++;
           console.log(
@@ -94,6 +101,7 @@ const validateLinks = ()  => {
       } else {
         console.log('error', response.status);
       }
+      //se muestran los resultados de los links
       if (brokenLinks + uniqueLinks === allLinks.length) {
         console.log(`*******************************************************************\n`.america);
         console.log(` File: ${mdExtension}`.cyan);
@@ -102,7 +110,7 @@ const validateLinks = ()  => {
         console.log(` ✖ Total Broken links: ${brokenLinks}\n`.red);
         console.log(`*******************************************************************`.america);
       }
-    }); 
+    });
   }
 }
 
@@ -126,12 +134,7 @@ const menuOptions = () => {
 menuOptions();
 
 const commanderModule = {
-  mdlinks, 
-  getLinks, 
-  validateAndStats, 
-  menuOptions, 
-  showStats, 
-  validateLinks,
+  mdLinks, getLinks, validateAndStats, menuOptions, showStats, validateLinks
 };
 
 module.exports = {

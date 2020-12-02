@@ -8,7 +8,7 @@ const testFile = 'TEST.md';
     });
     describe('read md', () => { 
         it ('should be a function', () => { 
-            expect (typeof commanderModule.mdlinks).toBe('function');
+            expect (typeof commanderModule.mdLinks).toBe('function');
         });
     });
     describe('stats', () => { 
@@ -23,7 +23,7 @@ const testFile = 'TEST.md';
     });
     describe('TEST.md', () => { 
         it ('It should read a .md file', () => { 
-            expect (commanderModule.mdlinks(testFile)).toBe(true);
+            expect (commanderModule.mdLinks(testFile)).toBe(true);
         });
     });
 }); 
