@@ -1,5 +1,18 @@
 # Markdown Links
 
+Instalar package npm read and validate links
+![npm](https://user-images.githubusercontent.com/65943524/100909414-b28b1780-349a-11eb-941f-60ed9df52416.JPG)
+
+## Stats
+![stats](https://user-images.githubusercontent.com/65943524/100909244-76f04d80-349a-11eb-9cd6-a46e5dc45f44.JPG)
+
+## Validate
+![validate](https://user-images.githubusercontent.com/65943524/100909261-79eb3e00-349a-11eb-8cbd-27704e31c975.JPG)
+
+## Broken and Unique links
+![brokenlinks](https://user-images.githubusercontent.com/65943524/100909279-7eaff200-349a-11eb-911a-5344d0745097.JPG)
+
+
 ## Índice
 
 * [1. Preámbulo](#1-preámbulo)
