@@ -1,4 +1,37 @@
 {
-  "name": "md-links",
-  "version": "0.1.0"
+  "name": "marcelacoronel-md-links",
+  "version": "0.1.0",
+  "description": "app to find and validate the links available in a markdown file (.MD)",
+  "main": "./src/index.js",
+  "bin": {
+    "md-links": "bin/cli.js"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "jsdom": "^16.4.0",
+    "markdown-it": "^11.0.1",
+    "marked": "^1.2.0",
+    "node-fetch": "^2.6.1"
+  },
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "author": "Marcela Coronel Picon",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^26.5.0"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcelacoronel/bog001-md-links.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/marcelacoronel/bog001-md-links/issues"
+  },
+  "homepage": "https://github.com/marcelacoronel/bog001-md-links#readme"
 }
